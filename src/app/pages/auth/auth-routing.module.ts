@@ -7,11 +7,25 @@ const routes: Routes = [
   {
     path: '',
     component: AuthPage
-  }
+  },
+
+  {
+    path: 'login',
+    loadChildren: () => import('./').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./').then(m => m.RegisterPageModule)
+  },
+  {
+    path: 'forget-password',
+    loadChildren: () => import('./').then(m => m.ForgetPasswordPageModule)
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AuthPageRoutingModule {}
+export class AuthPageRoutingModule { }
