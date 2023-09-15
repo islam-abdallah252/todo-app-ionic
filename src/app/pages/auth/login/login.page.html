@@ -1,4 +1,50 @@
 <ion-content class="ion-padding">
-  <h1>Login</h1>
-  <p>Welcome Back</p>
+  <div class="content">
+    <ion-header class="header">Login</ion-header>
+    <ion-label color="secondary" class="ion-text-center sub-header"
+      >Welcome Back</ion-label
+    >
+    <div class="ion-padding">
+      <form [formGroup]="loginForm">
+        <ion-item lines="none">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <!-- <ion-label>Email</ion-label> -->
+          <ion-input
+            formControlName="email"
+            placeholder="Ex: name@domain.com"
+            errorText="Email is required"
+            type="email"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="lock-closed" slot="start"></ion-icon>
+          <!-- <ion-label>Password</ion-label> -->
+          <ion-input
+            formControlName="password"
+            type="password"
+            placeholder="Enter Your Password"
+            errorText="Password is required"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <p class="ion-text-end forget-password">
+          <a routerLink="/auth/forget-password">Forget Password?</a>
+        </p>
+
+        <ion-button
+          type="submit"
+          ion-label
+          color="secondary"
+          expand="block"
+          (click)="login()"
+          >Login</ion-button
+        >
+      </form>
+      <p color="secondary" class="ion-text-center create-account">
+        <a routerLink="/auth/register">Don't have an account?</a>
+      </p>
+    </div>
+  </div>
 </ion-content>
