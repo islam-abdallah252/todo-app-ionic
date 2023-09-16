@@ -1,13 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <div class="content">
+    <ion-header class="header">Register</ion-header>
+    <ion-label color="secondary" class="ion-text-center sub-header"
+      >Don't have Account? Don't Worry...</ion-label
+    >
+    <div class="ion-padding">
+      <form [formGroup]="registerForm">
+        <ion-item lines="none">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <!-- <ion-label>Email</ion-label> -->
+          <ion-input
+            formControlName="email"
+            placeholder="Ex: name@domain.com"
+            errorText="Email is required"
+            type="email"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="lock-closed" slot="start"></ion-icon>
+          <!-- <ion-label>Password</ion-label> -->
+          <ion-input
+            formControlName="password"
+            type="password"
+            placeholder="Enter Your Password"
+            errorText="Password is required"
+            required
+          ></ion-input>
+        </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+        <p class="ion-text-end forget-password">
+          <a routerDirection="back" routerLink="/auth/login"
+            >Do you have account?</a
+          >
+        </p>
+
+        <ion-button
+          type="submit"
+          ion-label
+          color="secondary"
+          expand="block"
+          (click)="register()"
+          >Register</ion-button
+        >
+      </form>
+    </div>
+  </div>
 </ion-content>
