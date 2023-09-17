@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private navCon: NavController) { }
 
   ngOnInit() {
     this.initForm()
@@ -23,7 +24,11 @@ export class LoginPage implements OnInit {
 
   login() {
     console.log(this.loginForm.value)
-    if (this.loginForm.invalid) return
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+    this.navCon.navigateRoot('/home');
 
   }
 }

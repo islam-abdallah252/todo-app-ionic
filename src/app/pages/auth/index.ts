@@ -1,4 +1,4 @@
-export * from "./forget-password/forget-password.module";
-export * from "./login/login.module";
-export * from "./register/register.module";
+export * from "./pages/forget-password/forget-password.module";
+export * from "./pages/login/login.module";
+export * from "./pages/register/register.module";
 
