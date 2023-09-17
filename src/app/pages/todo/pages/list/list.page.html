@@ -34,12 +34,14 @@
             <ion-item-options>
               <ion-item-option
                 *ngIf="!list.completed"
-                (click)="actions('done')"
+                (click)="actions('done', list)"
                 color="success"
                 >Done</ion-item-option
               >
-              <ion-item-option (click)="actions('edit')">Edit</ion-item-option>
-              <ion-item-option (click)="actions('delete')" color="danger"
+              <ion-item-option (click)="actions('edit', list)"
+                >Edit</ion-item-option
+              >
+              <ion-item-option (click)="actions('delete', list)" color="danger"
                 >Delete</ion-item-option
               >
             </ion-item-options>

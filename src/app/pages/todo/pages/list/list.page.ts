@@ -27,8 +27,8 @@ export class ListPage implements OnInit {
   closeSlide() {
     this.list.closeSlidingItems();
   }
-  actions(item: any) {
-    switch (item) {
+  actions(type: any, list: any) {
+    switch (type) {
       case 'delete':
         console.log('delete')
         break;
@@ -36,12 +36,15 @@ export class ListPage implements OnInit {
         console.log('edit')
         break;
       case 'done':
-        console.log('done')
+        list.completed = true;
         break;
       default:
         break;
     }
+    console.log(type, list)
     this.closeSlide();
   }
+
+
 
 }

@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-    this.navCon.navigateRoot('/home');
+    this.navCon.navigateRoot('/home/list');
 
   }
 }
