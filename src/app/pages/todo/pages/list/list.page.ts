@@ -46,6 +46,13 @@ export class ListPage implements OnInit {
     this.closeSlide();
   }
 
+  handleRefresh(event: any) {
+    this.getList();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
+
 
 
 }
