@@ -27,10 +27,11 @@ export class ListPage implements OnInit {
   closeSlide() {
     this.list.closeSlidingItems();
   }
-  actions(type: any, list: any) {
+  actions(type: any, list: any, index: any) {
     switch (type) {
       case 'delete':
-        console.log('delete')
+        console.log('delete');
+        this.lists.splice(index, 1)
         break;
       case 'edit':
         console.log('edit')
