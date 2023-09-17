@@ -10,6 +10,8 @@ import { TodoService } from '../../services/todo.service';
 export class ListPage implements OnInit {
   @ViewChild(IonList, { static: false }) list!: IonList;
   lists: any;
+  loaded: boolean = false;
+  fakeList: any = new Array(15);
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
@@ -17,9 +19,12 @@ export class ListPage implements OnInit {
     this.getList()
   }
   getList() {
+    this.loaded = true;
     this.todoService.getList().subscribe((res: any) => {
       this.lists = res.slice(0, 20);
-      console.log(res)
+      setTimeout(() => {
+        this.loaded = false;
+      }, 3000);
     })
   }
 
@@ -50,7 +55,7 @@ export class ListPage implements OnInit {
     this.getList();
     setTimeout(() => {
       event.target.complete();
-    }, 2000);
+    }, 3000);
   }
 
 

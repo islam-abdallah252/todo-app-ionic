@@ -14,7 +14,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-row>
+  <ion-row *ngIf="!loaded">
     <ion-col
       size="12"
       size-sm="12"
@@ -57,6 +57,44 @@
               >
             </ion-item-options>
           </ion-item-sliding>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="loaded">
+    <ion-col
+      size="12"
+      size-sm="12"
+      size-md="6"
+      *ngFor="let list of fakeList;  "
+    >
+      <ion-card>
+        <ion-list>
+          <ion-item lines="none">
+            <div class="skeleton" slot="start">
+              <ion-avatar slot="start">
+                <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+              </ion-avatar>
+            </div>
+            <ion-label>
+              <h2>
+                <ion-text color="primary">
+                  <ion-skeleton-text
+                    [animated]="true"
+                    style="width: 80%"
+                  ></ion-skeleton-text
+                ></ion-text>
+              </h2>
+              <p>
+                <ion-text color="secondary"
+                  ><ion-skeleton-text
+                    [animated]="true"
+                    style="width: 60%"
+                  ></ion-skeleton-text
+                ></ion-text>
+              </p>
+            </ion-label>
+          </ion-item>
         </ion-list>
       </ion-card>
     </ion-col>
