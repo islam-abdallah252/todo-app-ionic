@@ -16,17 +16,31 @@ ion-card {
   // margin-top: 16px;
 }
 
-ion-item {
-  &.completed {
-    --background: #28a745 !important;
+ion-card {
+  padding: 0px;
 
-    ion-text {
-      --ion-color-base: #eee !important;
-    }
+  &.list-md {
+    padding: 0px;
+  }
 
-    .index {
-      color: #0cf10c;
-      border: 5px solid #0cf10c;
+  ion-list {
+    padding: 0px;
+
+    ion-item {
+      &.completed {
+        --background: #28a745 !important;
+
+        ion-text {
+          --ion-color-base: #eee !important;
+        }
+
+        .index {
+          color: #0cf10c;
+          border: 5px solid #0cf10c;
+        }
+      }
     }
   }
+
+
 }
