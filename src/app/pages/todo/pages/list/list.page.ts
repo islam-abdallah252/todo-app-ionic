@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonList, ModalController, ToastController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonList, ModalController, ToastController } from '@ionic/angular';
 import { TodoService } from '../../services/todo.service';
 import { AddEditPage } from '../add-edit/add-edit.page';
 
@@ -14,6 +14,7 @@ export class ListPage implements OnInit {
   loaded: boolean = false;
   fakeList: any = new Array(15);
   loading = false;
+  fullList: any;
   constructor(private todoService: TodoService, private toastController: ToastController, private modalCtrl: ModalController) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class ListPage implements OnInit {
   getList() {
     this.loaded = true;
     this.todoService.getList().subscribe((res: any) => {
+      this.fullList = res;
       this.lists = res.slice(0, 20);
       setTimeout(() => {
         this.loaded = false;
@@ -101,13 +103,22 @@ export class ListPage implements OnInit {
     });
     modal.present();
     await modal.onWillDismiss().then((res: any) => {
-      if (todo) {
-        this.lists[index] = res.data;
-        this.showToast('ToDo is Updated Successfully')
-      } else {
-        this.lists.unshift(res.data)
-        this.showToast('ToDo is Added Successfully');
+      if (res) {
+        if (todo) {
+          this.lists[index] = res.data;
+          this.showToast('ToDo is Updated Successfully')
+        } else {
+          this.lists.unshift(res.data)
+          this.showToast('ToDo is Added Successfully');
+        }
       }
     });
+  }
+
+  onIonInfinite(ev: any) {
+    setTimeout(() => {
+      this.lists.push(...this.fullList.slice(this.lists.length + 1, this.lists.length + 21)),
+        (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 }
