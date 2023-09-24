@@ -99,4 +99,14 @@
       </ion-card>
     </ion-col>
   </ion-row>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal(null , null)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+<ion-loading
+  [isOpen]="loading"
+  message="Loading..."
+  spinner="circles"
+></ion-loading>
