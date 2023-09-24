@@ -28,12 +28,14 @@ export class AddEditPage implements OnInit {
     })
   }
   submit() {
+    const { title, completed } = this.form.value;
     if (this.data) {
-      this.data.title = this.form.value.title;
+      this.data.title = title;
+      this.data.completed = completed;
     } else {
       this.data = {
-        title: this.form.value.title,
-        completed: false,
+        title: title,
+        completed: completed,
         id: Math.floor(Math.random() * 100) + 1,
         userId: Math.floor(Math.random() * 100) + 1
       };
